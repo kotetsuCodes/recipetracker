@@ -1,0 +1,29 @@
+	<div class="row">
+
+		<form class="col s12">
+
+		<h4>Modify {{ title }} Recipe</h4>
+
+				<div class="input-field">
+					<input type="text" id="recipeName" ng-model="name" value=""/>
+					<label class="active" for="recipeName">Recipe Name:</label>
+				</div>
+
+				<div class="input-field" ng-repeat="ingredient in ingredients">
+					<input type="text" id="ingredient_{{$index}}" ng-model="ingredient.name" value = "ingredient.name" ng-blur="appendIngredient()"/>
+					<label class="active" for="ingredient_{{$index}}">Ingredient:</label>
+				</div>
+
+				<div class="input-field">
+					<textarea class="materialize-textarea" id="instructions" ng-model="instructions" ></textarea>
+					<label class="active" for="instructions">Instructions:</label>
+				</div>
+
+				<button class="waves-effect waves-light btn center-block" ng-click="modifyRecipe()">{{ ButtonMsg }}</button>
+				<button class="waves-effect waves-light btn center-block" ng-click="deleteRecipe()">Delete Recipe</button>
+
+		</form>
+
+	
+	</div>
+	

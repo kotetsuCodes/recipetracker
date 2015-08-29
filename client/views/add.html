@@ -1,0 +1,26 @@
+	<div class="row">
+
+		<form class="col s12">
+
+				<div class="input-field">
+					<input type="text" id="recipeName" ng-model="name" />
+					<label for="recipeName">Recipe Name:</label>
+				</div>
+
+				<div class="input-field" ng-repeat="ingredient in ingredients">
+					<input type="text" id="ingredient_{{$index}}" ng-model="ingredient.name" ng-blur="appendIngredient()" />
+					<label for="ingredient1">Ingredient:</label>
+				</div>
+
+				<div class="input-field">
+					<textarea class="materialize-textarea" id="instructions" ng-model="instructions" ></textarea>
+					<label for="instructions">Instructions:</label>
+				</div>
+
+				<button class="waves-effect waves-light btn center-block" ng-click="addRecipe()">Save</button>
+
+		</form>
+
+	
+	</div>
+

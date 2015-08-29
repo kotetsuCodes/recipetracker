@@ -1,0 +1,13 @@
+	<div class="row">
+	
+		<div class="col s12 center-align"> 
+			
+			<div class="collection">
+					<a ng-repeat="recipe in recipes" href="#" class="collection-item" ng-click="modifyRecipe(recipe.data.name)">{{recipe.data.name}}</a>
+			</div>
+
+			<button class="waves-effect waves-light btn center-block" ng-click="add()"><span class="mif-plus"></span> Add Recipe</button>
+
+		</div>
+
+	</div>
