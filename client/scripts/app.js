@@ -1,9 +1,9 @@
 'use strict';
 
-require('angular');
-require('angular-ui-router');
-require('satellizer');
-require('../styles/main.scss');
+//require('angular');
+//require('angular-ui-router');
+//require('satellizer');
+//require('../styles/main.scss');
 
 angular
   .module('carlpapaApp', [
@@ -43,7 +43,4 @@ angular
   })
     .constant('myConfig', { 'backend':'http://localhost:9090/api/' });
 
-require('./controllers/add');
-require('./controllers/login');
-require('./controllers/main');
-require('./controllers/modify');
+

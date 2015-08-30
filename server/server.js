@@ -50,15 +50,21 @@ router.route('/createAccount')
 
 	.post(function(req, res){
 	
+		//user DB object
 		var user = new User();
+
+		//$_POST['email']
+		
+		//set values from request to DB properties
 		user.email = req.body.email;
 		user.password = req.body.password;
 
+		//Insert record into DB
 		user.save(function(err, user){
 			if(err) throw err;
 
 		console.log('User Created Successfully');
-		res.json({success: true});
+		res.json({success: true, user: user._id});
 
 		});
 	});
@@ -109,12 +115,10 @@ router.route('/authenticate')
 		  });
 });
 
-
+//runs on every request
 router.use(function(req, res, next) {
-	// check header or url parameters or post parameters for token
 
-	console.log(req.headers['authorization']);
-
+  // check header or url parameters or post parameters for token
   var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers['authorization'];
 
   // decode token
@@ -196,6 +200,11 @@ router.route('/recipe/:name')
 
 		User.findOne({_id: req.decoded._id}, function(err, user){
 			Recipe.findOne({name: req.params.name, User_Id: user._id}, function(err, recipe){
+
+				if(err){
+					throw err;
+				}
+
 				res.json(recipe);
 			});	
 		});
@@ -206,6 +215,11 @@ router.route('/recipe/:name')
 		//update a single recipe
 
 		User.findOne({_id: req.decoded._id}, function(err, user){
+			
+			if(err){
+				throw err;
+			}
+
 			Recipe.findOne({name: req.params.name, User_Id: user._id}, function(err, recipe){
 				
 				recipe.name = req.body.name;

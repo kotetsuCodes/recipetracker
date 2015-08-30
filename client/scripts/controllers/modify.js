@@ -7,9 +7,9 @@
  * # MainController
  * Controller of the carlpapaApp
  */
- module.exports = angular.module('carlpapaApp')
+ angular.module('carlpapaApp')
  	.controller('ModifyController', function($scope, $location, $timeout, $state, $stateParams, $http, myConfig){
-		$http.get(myConfig.backend + 'recipe/' + $stateParams.id)
+		$http.get('http://localhost:9090/api/recipe/' + $stateParams.id)
 			.success(function(data){
 				
 				$scope.ButtonMsg = "Save Recipe";
@@ -58,9 +58,9 @@
 						 		.success(function(data){
 						 			$scope.ButtonMsg = "Recipe Saved!";
 
-						 			$timeout(function(){
-						 				$scope.ButtonMsg = "Save Recipe";
-						 			}, 5000);
+						 			$timeout(function() {
+					 					$location.path('/');
+						 			}, 2000);
 
 						 		}); 
 				 		}		

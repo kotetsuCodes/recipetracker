@@ -1,6 +1,6 @@
 'use strict';
 
- module.exports = angular.module('carlpapaApp')
+angular.module('carlpapaApp')
   .controller('MainController', function ($scope, $http, $location, myConfig) {
     $http.get(myConfig.backend + 'recipe')
       .success(function(data){
@@ -16,8 +16,9 @@
   		$location.path('add');
   	};
 
-    $scope.modifyRecipe = function(recipeName){
-      $location.path(recipeName);
+    $scope.modifyRecipe = function(name) {
+      console.log('Recipe name to be modified is: ' + name);
+      $location.path(name);
     };
 
   });

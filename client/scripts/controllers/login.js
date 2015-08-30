@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = angular.module('carlpapaApp')
+angular.module('carlpapaApp')
 	.controller('LoginController', function($scope, $http, $auth, $state, myConfig){
 		
 		$scope.login = function(){

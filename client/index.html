@@ -5,6 +5,8 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -22,37 +24,23 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">carlpapa</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    
     <div class="container">
     <div ui-view=""></div>
     </div>
 
-        <script src="bundle.js"></script>
+        <!--<script src="bundle.js"></script>-->
         <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+        <script src="node_modules/angular/angular.js"></script>
+        <script src="node_modules/angular-ui-router/build/angular-ui-router.js"></script>
+        <script src="node_modules/satellizer/satellizer.js"></script>
+        <!-- load in controllers -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/add.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/modify.js"></script>
+
 </body>
 </html>

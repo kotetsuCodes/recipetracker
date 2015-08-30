@@ -8,11 +8,11 @@
  * Controller of the carlpapaApp
  */
 
-module.exports = angular.module('carlpapaApp')
+angular.module('carlpapaApp')
 	.controller('AddController', function($scope, $location, $http, myConfig){
 		$scope.ingredients = [{}];
 
-		$scope.addRecipe = function(){
+		$scope.addRecipe = function() {
 			var ingredients = [];
 			var recipeCompleted = false;
 
