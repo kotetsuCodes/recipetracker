@@ -10,15 +10,16 @@
 				<div class="input-field" ng-repeat="ingredient in ingredients">
 
 					<div class="card blue-grey darken-1">
-			            <div class="card-content white-text">
-			              <span class="card-title">Ingredient:</span>
-			              <input type="text" id="ingredient_{{$index}}" ng-model="ingredient.name" ng-blur="appendIngredient()" />
-			            </div>
-			            <div class="card-action">
-			            <a class="btn-floating waves-effect waves-light red" ng-click="appendIngredient"><i class="material-icons">add</i></a>
-			            </div>
-		            </div>
-					
+	          <div class="card-content white-text">
+	            <span class="card-title">Ingredient:</span>
+	            <input type="text" id="ingredient_{{$index}}" ng-model="ingredient.name" />
+	          </div>
+
+						<div class="card-action">
+	          	<a class="btn-floating waves-effect waves-light red" ng-click="appendIngredient()"><i class="material-icons">add</i></a>
+							<a class="btn-floating waves-effect waves-light red" ng-click="removeIngredient($index)"><i class="material-icons">clear</i></a>
+	          </div>
+          </div>
 				</div>
 
 				<div class="input-field">
@@ -30,6 +31,5 @@
 
 		</form>
 
-	
-	</div>
 
+	</div>

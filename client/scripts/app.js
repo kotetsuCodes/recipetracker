@@ -11,8 +11,8 @@ angular
     'satellizer'
   ])
 
-  .config(function ($stateProvider, $urlRouterProvider, $authProvider) {
-    
+  .config(function ($stateProvider, $locationProvider, $urlRouterProvider, $authProvider) {
+
     $authProvider.loginUrl = 'http://localhost:9090/api/authenticate';
     $authProvider.authHeader = 'authorization';
     $authProvider.authToken = '';
@@ -40,7 +40,8 @@ angular
         templateUrl: 'views/modify.html',
         controller: 'ModifyController'
       });
+
+      //$locationProvider.html5Mode(true);
+
   })
     .constant('myConfig', { 'backend':'http://localhost:9090/api/' });
-
-
