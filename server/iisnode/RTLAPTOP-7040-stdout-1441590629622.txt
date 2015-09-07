@@ -1,2 +1,0 @@
-Carl Papa happens on port \\.\pipe\f5cf46ad-a6bd-4d3d-af2f-322eaef53d6b
-[90mGET /server.js [33m404 [90m13ms[0m

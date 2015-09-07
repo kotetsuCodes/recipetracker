@@ -30,15 +30,7 @@ app.set('superSecret', settings.secret);
 //require in mongoose models
 var User = require('./app/models/user');
 var Recipe = require('./app/models/recipe');
-
-/*
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, x-access-token, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS,");
-  next();
-});
-*/
+var ShoppingList = require('./app/models/shoppinglist');
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -49,22 +41,20 @@ var router = express.Router();
 router.route('/createAccount')
 
 	.post(function(req, res){
-	
-		//user DB object
-		var user = new User();
 
-		//$_POST['email']
-		
-		//set values from request to DB properties
-		user.email = req.body.email;
-		user.password = req.body.password;
+			//user DB object
+			var user = new User();
 
-		//Insert record into DB
-		user.save(function(err, user){
-			if(err) throw err;
+			//set values from request to DB properties
+			user.email = req.body.email;
+			user.password = req.body.password;
 
-		console.log('User Created Successfully');
-		res.json({success: true, user: user._id});
+			//Insert record into DB
+			user.save(function(err, user){
+				if(err) throw err;
+
+			console.log('User Created Successfully');
+			res.json({success: true, user: user._id});
 
 		});
 	});
@@ -72,7 +62,7 @@ router.route('/createAccount')
 
 
 router.route('/authenticate')
-	
+
 	.post(function(req,res){
 
 		console.log('attempting to authenticate');
@@ -108,7 +98,7 @@ router.route('/authenticate')
 		          message: 'Enjoy your token!',
 		          token: token
 		        });
-		      }   
+		      }
 
 		    }
 
@@ -125,12 +115,12 @@ router.use(function(req, res, next) {
   if (token) {
 
     // verifies secret and checks exp
-    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
       if (err) {
-      	res.status(401).send({ success: false, message: 'Failed to authenticate token.' });    
+      	res.status(401).send({ success: false, message: 'Failed to authenticate token.' });
       } else {
         // if everything is good, save to request for use in other routes
-        req.decoded = decoded;    
+        req.decoded = decoded;
         next();
       }
     });
@@ -139,11 +129,11 @@ router.use(function(req, res, next) {
 
     // if there is no token
     // return an error
-    return res.status(403).send({ 
-        success: false, 
-        message: 'No token provided.' 
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
     });
-    
+
   }
 });
 
@@ -152,12 +142,10 @@ router.use(function(req, res, next) {
 
 router.route('/recipe')
 
-	.post(function(req, res){
-		
-		console.log(req.body.name);
+	.post(function(req, res) {
 
-		User.findOne({_id: req.decoded._id}, function(err, user){
-			
+		User.findOne({_id: req.decoded._id}, function(err, user) {
+
 			var recipe = new Recipe();
 
 			recipe.User_Id = user._id;
@@ -165,36 +153,81 @@ router.route('/recipe')
 			recipe.instructions = req.body.instructions;
 			recipe.ingredients = req.body.ingredients;
 
-			recipe.save(function(err, recipe){
-
-				res.json({success: true});				
-
+			recipe.save(function(err, recipe) {
+				res.json({success: true});
 			});
-
-
 		});
+	})
+	//get all recipes for a specific user
+	.get(function(req, res) {
+		User.findOne({_id: req.decoded._id}, function(err, user) {
+			Recipe.find({User_Id: user._id}, function(err, recipes) {
+				res.json(recipes);
+			});
+		});
+	});
 
-		
+router.route('/shoppinglist')
+	.post(function(req, res) {
+
+		User.findOne({_id: req.decoded._id}, function(err, user) {
+
+			var shoppinglist = new ShoppingList();
+
+			shoppinglist.User_Id = user._id;
+			shoppinglist.name = req.body.name;
+			shoppinglist.recipes = req.body.recipes;
+
+			shoppinglist.save(function(err, shoppinglist) {
+				res.json({success: true});
+			});
+		});
+	})
+
+	.get(function(req, res){
+		User.findOne({_id: req.decoded._id}, function(err, user) {
+			ShoppingList.find({User_Id: user._id}, function(err, shoppinglists) {
+				res.json(shoppinglists);
+			});
+		});
+	});
+
+router.route('/shoppinglist/:name')
+	.get(function(req, res) {
+		User.findOne({_id: req.decoded._id}, function(err, user) {
+			ShoppingList.findOne({name: req.params.name, User_Id: user._id}, function(err, shoppinglist) {
+				if(err) {
+					throw err;
+				}
+
+				res.json(shoppinglist);
+			});
+		});
 
 	})
 
-	//get all recipes for a specific user
-	.get(function(req, res){
+	.put(function(req, res){
+		//update a single recipe
 
 		User.findOne({_id: req.decoded._id}, function(err, user){
+			if(err) {
+				throw err;
+			}
+			ShoppingList.findOne({name: req.params.name, User_Id: user._id}, function(err, shoppinglist) {
+				shoppinglist.name = req.body.name;
+				shoppinglist.recipes = req.body.recipes;
+				shoppinglist.markModified('recipes');
 
-			Recipe.find({User_Id: user._id}, function(err, recipes){
-				res.json(recipes);
+				shoppinglist.save(function(err, shoppinglist) {
+					res.json({success: true});
+				});
 			});
-
 		});
 
-		
 	});
 
-
 router.route('/recipe/:name')
-	
+
 	.get(function(req, res) {
 		//get single recipe for specific user
 
@@ -206,7 +239,7 @@ router.route('/recipe/:name')
 				}
 
 				res.json(recipe);
-			});	
+			});
 		});
 
 	})
@@ -215,24 +248,24 @@ router.route('/recipe/:name')
 		//update a single recipe
 
 		User.findOne({_id: req.decoded._id}, function(err, user){
-			
+
 			if(err){
 				throw err;
 			}
 
 			Recipe.findOne({name: req.params.name, User_Id: user._id}, function(err, recipe){
-				
+
 				recipe.name = req.body.name;
 				recipe.ingredients = req.body.ingredients;
 				recipe.instructions = req.body.instructions;
-				
+
 
 				recipe.markModified('ingredients');
 				recipe.markModified('instructions');
 
 				recipe.save(function(err, recipe){
 
-					res.json({success: true});				
+					res.json({success: true});
 
 				});
 

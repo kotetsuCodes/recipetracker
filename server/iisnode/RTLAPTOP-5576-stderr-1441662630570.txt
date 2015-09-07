@@ -1,0 +1,12 @@
+Application has thrown an uncaught exception and is terminated:
+TypeError: Cannot read property '_id' of null
+    at Promise.<anonymous> (D:\Dev\recipetracker\server\server.js:182:31)
+    at Promise.<anonymous> (D:\Dev\recipetracker\server\node_modules\mongoose\node_modules\mpromise\lib\promise.js:162:8)
+    at Promise.emit (events.js:107:17)
+    at Promise.emit (D:\Dev\recipetracker\server\node_modules\mongoose\node_modules\mpromise\lib\promise.js:79:38)
+    at Promise.fulfill (D:\Dev\recipetracker\server\node_modules\mongoose\node_modules\mpromise\lib\promise.js:92:20)
+    at D:\Dev\recipetracker\server\node_modules\mongoose\lib\query.js:1794:30
+    at D:\Dev\recipetracker\server\node_modules\mongoose\lib\utils.js:414:16
+    at D:\Dev\recipetracker\server\node_modules\mongoose\node_modules\mongodb\lib\mongodb\collection.js:953:5
+    at D:\Dev\recipetracker\server\node_modules\mongoose\node_modules\mongodb\lib\mongodb\cursor.js:683:35
+    at Cursor.close (D:\Dev\recipetracker\server\node_modules\mongoose\node_modules\mongodb\lib\mongodb\cursor.js:903:5)

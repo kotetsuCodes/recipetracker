@@ -8,17 +8,12 @@ angular.module('carlpapaApp')
 
   $http.get(myConfig.backend + 'recipe')
     .success(function(data) {
-      $scope.recipes = [];
-
-        for(var i=0;i<data.length;i++) {
-          $scope.recipes.push({ data: data[i] });
-        }
-
+      $scope.recipes = data;
     });
 
   $scope.addRecipeToList = function(recipe) {
     for(var i=0;i<$scope.recipes.length;i++) {
-      if($scope.recipes[i].data.name == recipe) {
+      if($scope.recipes[i].name == recipe) {
         $scope.addedRecipes.push($scope.recipes[i]);
       }
     }
@@ -27,7 +22,7 @@ angular.module('carlpapaApp')
 
   $scope.saveShoppingList = function() {
     if($scope.addedRecipes.length > 0 && $scope.shoppingListName != '') {
-      $http.post('http://localhost:9090/api/shoppinglist', { name: $scope.shoppingListName, recipes: $scope.addedRecipes})
+      $http.post(myConfig.backend + 'shoppinglist', { name: $scope.shoppingListName, recipes: $scope.addedRecipes})
         .success(function(data) {
           //$location.path();
         });

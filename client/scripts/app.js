@@ -45,8 +45,18 @@ angular
         templateUrl: 'views/AddShoppingList.html',
         controller: 'AddShoppingListController'
       })
-      .state(':id', {
-        url: '/:id',
+      .state('ShoppingLists', {
+        url: '/ShoppingLists',
+        templateUrl: 'views/ShoppingLists.html',
+        controller: 'ShoppingListsController'
+      })
+      .state('shoppinglist/:id', {
+        url: '/shoppinglist/:id',
+        templateUrl: 'views/ModifyShoppingList.html',
+        controller: 'ModifyShoppingListController'
+      })
+      .state('recipe/:id', {
+        url: '/recipe/:id',
         templateUrl: 'views/ModifyRecipe.html',
         controller: 'ModifyRecipeController'
       });

@@ -3,9 +3,15 @@
 		<div class="col s12 center-align">
 
 			<div class="collection">
-					<a ng-repeat="recipe in recipes" href="javascript:" class="collection-item" ng-click="modifyRecipe(recipe.data.name)">{{recipe.data.name}}</a>
+					<a ng-repeat="recipe in recipes" href="javascript:" class="collection-item" ng-click="modifyRecipe(recipe.name)">{{recipe.name}}</a>
 			</div>
 
 		</div>
 
+	</div>
+
+	<div class="row">
+	  <div class="col s12 m12 l12">
+			<button class="waves-effect waves-light btn center-block" ng-click="addRecipe()">Add Recipe</button>
+	  </div>
 	</div>

@@ -59,7 +59,7 @@
 						 			$scope.ButtonMsg = "Recipe Saved!";
 
 						 			$timeout(function() {
-					 					$location.path('/');
+					 					$location.path('/ListRecipes');
 						 			}, 2000);
 
 						 		});

@@ -7,12 +7,8 @@ angular.module('carlpapaApp')
       $location.path('ListRecipes');
     }
 
-  $scope.addRecipe = function() {
-    $location.path('AddRecipe');
-  };
-
-  $scope.addShoppingList = function() {
-    $location.path('AddShoppingList');
+  $scope.shoppingLists = function() {
+    $location.path('ShoppingLists');
   }
 
 });
