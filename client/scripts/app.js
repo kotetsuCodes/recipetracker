@@ -30,15 +30,25 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainController'
       })
-      .state('add', {
-        url: '/add',
-        templateUrl: 'views/add.html',
-        controller: 'AddController'
+      .state('ListRecipes', {
+        url: '/ListRecipes',
+        templateUrl: 'views/ListRecipes.html',
+        controller: 'ListRecipesController'
+      })
+      .state('AddRecipe', {
+        url: '/AddRecipe',
+        templateUrl: 'views/AddRecipe.html',
+        controller: 'AddRecipeController'
+      })
+      .state('AddShoppingList', {
+        url: '/AddShoppingList',
+        templateUrl: 'views/AddShoppingList.html',
+        controller: 'AddShoppingListController'
       })
       .state(':id', {
         url: '/:id',
-        templateUrl: 'views/modify.html',
-        controller: 'ModifyController'
+        templateUrl: 'views/ModifyRecipe.html',
+        controller: 'ModifyRecipeController'
       });
 
       //$locationProvider.html5Mode(true);

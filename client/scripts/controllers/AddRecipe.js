@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('carlpapaApp')
-	.controller('AddController', function($scope, $location, $http, myConfig) {
+	.controller('AddRecipeController', function($scope, $location, $http, myConfig) {
 		$scope.ingredients = [{}];
 
 		$scope.addRecipe = function() {

@@ -2,22 +2,17 @@
 
 angular.module('carlpapaApp')
   .controller('MainController', function ($scope, $http, $location, myConfig) {
-    $http.get(myConfig.backend + 'recipe')
-      .success(function(data) {
-        $scope.recipes = [];
 
-          for(var i=0;i<data.length;i++){
-            $scope.recipes.push({ data: data[i] });
-          }
+    $scope.listRecipes = function() {
+      $location.path('ListRecipes');
+    }
 
-      });
+  $scope.addRecipe = function() {
+    $location.path('AddRecipe');
+  };
 
-  	$scope.add = function() {
-  		$location.path('add');
-  	};
+  $scope.addShoppingList = function() {
+    $location.path('AddShoppingList');
+  }
 
-    $scope.modifyRecipe = function(name) {
-      $location.path(name);
-    };
-
-  });
+});

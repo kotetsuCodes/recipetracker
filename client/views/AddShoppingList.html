@@ -1,0 +1,11 @@
+<input type="text" ng-model="searchText">
+
+<ul class="collection" ng-repeat="recipe in recipes | filter:{$:searchText}">
+    <li href="#!" class="collection-item">
+      <div>{{recipe.data.name}}
+        <a href="javascript:" class="secondary-content" ng-click="addRecipeToList(recipe.data.name)">
+          <i class="material-icons">add</i>
+        </a>
+      </div>
+    </li>
+</ul>
