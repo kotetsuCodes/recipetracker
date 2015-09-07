@@ -1,5 +1,0 @@
-Carl Papa happens on port \\.\pipe\32529df4-7841-4bf3-a5a1-44532fca0e22
-[90mGET /api/recipe [32m200 [90m61ms - 840b[0m
-[90mPOST /api/recipe [32m200 [90m13ms - 16b[0m
-[90mGET /api/recipe [32m200 [90m5ms - 988b[0m
-[90mGET /api/recipe [32m200 [90m5ms - 988b[0m

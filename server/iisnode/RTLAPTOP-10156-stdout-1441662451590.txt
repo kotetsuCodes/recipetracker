@@ -1,8 +1,0 @@
-Carl Papa happens on port \\.\pipe\a3969d78-bdf5-41a3-bb5b-7c239cd2e957
-[90mGET /api/recipe [33m403 [90m17ms - 48b[0m
-[90mGET /api/recipe [33m403 [90m2ms - 48b[0m
-attempting to authenticate
-token successful
-[90mPOST /api/authenticate [32m200 [90m19ms - 273b[0m
-[90mGET /api/recipe [32m200 [90m11ms - 840b[0m
-[90mGET /api/recipe [32m200 [90m8ms - 840b[0m
