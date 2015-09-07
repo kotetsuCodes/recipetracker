@@ -3,8 +3,8 @@
 angular.module('carlpapaApp')
   .controller('AddShoppingListController', function ($scope, $http, $location, myConfig) {
 
-  $scope.searchText = "Search";
   $scope.addedRecipes = [];
+  $scope.shoppingListName = '';
 
   $http.get(myConfig.backend + 'recipe')
     .success(function(data) {
@@ -22,14 +22,16 @@ angular.module('carlpapaApp')
         $scope.addedRecipes.push($scope.recipes[i]);
       }
     }
+  }
 
 
-
+  $scope.saveShoppingList = function() {
+    if($scope.addedRecipes.length > 0 && $scope.shoppingListName != '') {
+      $http.post('http://localhost:9090/api/shoppinglist', { name: $scope.shoppingListName, recipes: $scope.addedRecipes})
+        .success(function(data) {
+          //$location.path();
+        });
     }
-
-
-  $scope.saveShoppingList = function(recipe) {
-    
   };
 
 });
