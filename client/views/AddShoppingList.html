@@ -10,15 +10,11 @@
 
       <input type="text" ng-model="searchText" placeholder="Search Recipes">
 
-      <ul class="collection" ng-repeat="recipe in recipes | filter:{$:searchText}">
-          <li href="#!" class="collection-item">
-            <div>{{recipe.name}}
-              <a href="javascript:" class="secondary-content" ng-click="addRecipeToList(recipe.name)">
-                <i class="material-icons">add</i>
-              </a>
-            </div>
-          </li>
-      </ul>
+      <div class="collection" ng-repeat="recipe in recipes | filter:{$:searchText}">
+          <a href="javascript:" class="collection-item" ng-click="addRecipeToList(recipe.name)">
+              {{recipe.name}}
+          </a>
+      </div>
 
     </div>
 
@@ -28,11 +24,11 @@
   <div class="col s12 m4 l4">
     <div class="card-panel teal">
       <input type="text" onkeydown="return false;" placeholder="Added Recipes">
-      <ul class="collection" ng-repeat="addedRecipe in addedRecipes">
-          <li href="#!" class="collection-item">
-            {{addedRecipe.name}}
-          </li>
-      </ul>
+      <div class="collection" ng-repeat="addedRecipe in addedRecipes">
+          <a href="javascript:" class="collection-item" ng-click="removeRecipeFromList($index)">
+              {{addedRecipe.name}}
+          </a>
+      </div>
     </div>
 
     <button class="waves-effect waves-light btn center-block" ng-click="saveShoppingList()">Save Shopping List</button>

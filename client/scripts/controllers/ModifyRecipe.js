@@ -69,12 +69,19 @@
 			 };
 
 
-			$scope.appendIngredient = function(){
+  $scope.appendIngredient = function(){
 
-			 	if($scope.ingredients[$scope.ingredients.length - 1].name != null && $scope.ingredients[$scope.ingredients.length - 1].name != ''){
-			 		$scope.ingredients.push({ name: "" });
-			 	}
-			};
+     if($scope.ingredients[$scope.ingredients.length - 1].name != null && $scope.ingredients[$scope.ingredients.length - 1].name != ''){
+       $scope.ingredients.push({ name: "" });
+     }
+  };
+
+  $scope.removeIngredient = function(ingredient) {
+    if($scope.ingredients.length != 1) {
+			$scope.ingredients.splice(ingredient, 1);
+		}
+	};
+
 
 			$scope.deleteRecipe = function(){
 				$http.delete(myConfig.backend + 'recipe/' + $stateParams.id)

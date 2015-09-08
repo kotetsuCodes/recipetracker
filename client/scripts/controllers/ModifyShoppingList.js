@@ -26,6 +26,9 @@ angular.module('carlpapaApp')
     }
   }
 
+  $scope.removeRecipeFromList = function(recipe) {
+    $scope.addedRecipes.splice(recipe, 1);
+  }
 
   $scope.saveShoppingList = function() {
     if($scope.addedRecipes.length > 0 && $scope.shoppingListName != '') {
