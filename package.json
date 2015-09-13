@@ -1,0 +1,56 @@
+{
+  "name": "recipetracker",
+  "version": "1.0.0",
+  "description": "An app for storing recipes and shopping lists",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline --progress --colors",
+    "build": "webpack --progress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/registrinstar/recipetracker.git"
+  },
+  "keywords": [
+    "recipe",
+    "shopping",
+    "list"
+  ],
+  "author": "Carl Brown",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/registrinstar/recipetracker/issues"
+  },
+  "homepage": "https://github.com/registrinstar/recipetracker#readme",
+  "devDependencies": {
+    "babel-core": "^5.6.20",
+    "babel-loader": "^5.3.1",
+    "isparta": "^3.0.3",
+    "isparta-loader": "^0.2.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.9",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-coverage": "douglasduteil/karma-coverage#next",
+    "karma-jasmine": "^0.3.6",
+    "karma-jasmine-html-reporter": "^0.1.8",
+    "karma-webpack": "^1.7.0",
+    "webpack": "^1.10.1"
+  },
+  "dependencies": {
+    "alt": "^0.17.1",
+    "css-loader": "^0.15.4",
+    "file-loader": "^0.8.4",
+    "hammerjs": "^2.0.4",
+    "isparta-instrumenter-loader": "^0.2.1",
+    "jquery": "^2.1.4",
+    "materialize-sass": "^0.95.2",
+    "node-sass": "*",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "react-tools": "^0.13.3",
+    "sass-loader": "^1.0.2",
+    "style-loader": "^0.12.3",
+    "superagent": "^1.3.0",
+    "url-loader": "^0.5.6"
+  }
+}
